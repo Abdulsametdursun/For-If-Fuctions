@@ -1,0 +1,62 @@
+body {
+  background-color: gray;
+}
+
+.box-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+@for $i from 1 through 5 {
+  .box-#{$i} {
+    @if ($i > 4) {
+      background-color: pink;
+    } @else {
+      height: 20px;
+    }
+    @if ($i == 3) {
+      background-color: red;
+    } @else if ($i == 2) {
+      background-color: green;
+    } @else if ($i < 2) {
+      background-color: orange;
+    } @else {
+      background-color: purple;
+    }
+    width: 15px;
+    height: #{15 * $i}px;
+    @if ($i < 2) {
+      height: #{50 * $i}px;
+    }
+
+    @if ($i == 5) {
+      height: #{$i * 10}px;
+      background-color: yellow;
+    }
+    margin: 5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+
+@function changeFontSize($color) {
+  @if ($color == antiquewhite) {
+    @return 18px;
+  } @else {
+    @return 25px;
+  }
+}
+
+.message {
+  color: antiquewhite;
+  font-size: changeFontSize(antiquewhite);
+  font-weight: 500;
+}
+
+.message-two {
+  color: red;
+  font-size: changeFontSize(red);
+  font-weight: 500;
+}
